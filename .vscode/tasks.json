@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "run with input.txt file",
+      "type": "shell",
+      "command": "if [ ! -e ${fileDirname}/input.txt ]; then echo 'No input.txt file'; exit 1; else ${fileDirname}/${fileBasenameNoExtension} <${fileDirname}/input.txt; fi;",
+      "problemMatcher": [],
+      "dependsOn": ["clang++ build active file"]
+    },
+    {
+      "type": "shell",
+      "label": "clang++ build active file",
+      "command": "/bin/clang++",
+      "args": [
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "cwd": "/bin"
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "type": "shell",
+      "label": "g++ build active file",
+      "command": "/bin/g++",
+      "args": [
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "cwd": "/bin"
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
