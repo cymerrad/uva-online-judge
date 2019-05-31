@@ -2,9 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "run with input.txt file",
+      "label": "run with input.txt file and generate output.txt",
       "type": "shell",
-      "command": "if [ ! -e ${fileDirname}/input.txt ]; then echo 'No input.txt file'; exit 1; else ${fileDirname}/${fileBasenameNoExtension} <${fileDirname}/input.txt; fi;",
+      "command": "if [ ! -e ${fileDirname}/input.txt ]; then echo 'No input.txt file'; exit 1; else ${fileDirname}/${fileBasenameNoExtension} < ${fileDirname}/input.txt > ${fileDirname}/output.txt; fi;",
       "problemMatcher": [],
       "dependsOn": ["clang++ build active file"]
     },
