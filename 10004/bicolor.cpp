@@ -7,7 +7,7 @@
 using namespace std;
 
 const int MAX_NODES = 200;
-const int MAX_EDGES = MAX_NODES * MAX_NODES;
+// const int MAX_EDGES = MAX_NODES * MAX_NODES;
 
 enum class Color : char
 {
@@ -100,7 +100,7 @@ bool isBicolorable(BiColorGraph &graph, ColorMap &colors)
 
 int main(int argc, char const *argv[])
 {
-	BiColorGraph graph(MAX_EDGES, vector<Node>());
+	BiColorGraph graph(MAX_NODES);
 	ColorMap colors = {Color::NONE};
 
 	int N; // nodes < 200
