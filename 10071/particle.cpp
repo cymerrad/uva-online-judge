@@ -13,18 +13,19 @@ using namespace std;
  *          = MATHS
  *          = 2 * v_1 * t_1
  */
-int magic(int v, int t)
-{
-	return 2 * v * t;
-}
+// int magic(int v, int t)
+// {
+// 	return 2 * v * t;
+// }
 
 int main(int argc, char const *argv[])
 {
+	ios_base::sync_with_stdio(false);
 	int v, t;
 
 	while (cin >> v >> t)
 	{
-		cout << magic(v, t) << endl;
+		cout << 2 * v * t << endl;
 	}
 
 	return 0;
