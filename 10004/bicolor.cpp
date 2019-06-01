@@ -21,6 +21,7 @@ Color flipColor(Color c) { return c == Color::BLACK ? Color::WHITE : Color::BLAC
 const char *ACCEPTED = "BICOLORABLE.";
 const char *REJECTED = "NOT BICOLORABLE.";
 
+// this is going to look very ugly with tab width other than 2
 const string debugCase = "3\n"
 												 "3\n"
 												 "0 1\n"
