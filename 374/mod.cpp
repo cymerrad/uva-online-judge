@@ -2,23 +2,22 @@
 
 using namespace std;
 
+// NOTE TO SELF
+// compare this file to previous version
+// and try to figure out why this program
+// completes the task in 0 seconds
+// and the other exceeds the time limit
+
 /*
  * P = a*1 + b*2 + c*4 + d*8 + ...
  * B^P = (B)^a * (B^2)^b * (B^4)^c + ...
  */
 int powerMod(int B, int P, int M)
 {
-	int R = 1;									// B^0
-	unsigned B_squares = B % M; // < 2^16
-	int highestBit = 31;				// (1 << 31) = 2^31
-	unsigned bit = 1 << highestBit;
-	while ((bit & P) == 0)
-	{
-		highestBit--;
-		bit = bit >> 1;
-	}
-	bit = 1;
-	for (int i = 0; i < highestBit; i++) // one less, last one will be outside
+	int R = 1;						 // B^0
+	int B_squares = B % M; // < 2^16
+	int bit = 1;
+	for (int i = 0; i < 31; i++)
 	{
 		if (bit & P)
 		{
@@ -26,13 +25,9 @@ int powerMod(int B, int P, int M)
 			R %= M;					// < 2^16
 		}
 
+		B_squares = (B_squares * B_squares) % M; // < 2^16
 		bit = bit << 1;
-		B_squares *= B_squares; // < 2^32
-		B_squares %= M;					// < 2^16
 	}
-
-	R *= B_squares;
-	R %= M;
 
 	return R;
 }
