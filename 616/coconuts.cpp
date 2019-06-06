@@ -6,12 +6,13 @@ using namespace std;
 // using Checker = unary_function<int, bool>;
 using Checker = function<bool(const int)>;
 
+// we are generating this:
+// n*((k-1)/k)^k - k*(1 - ((k-1)/k)^(k+1)) + 1 mod k
+// https://www.wolframalpha.com/input/?i=n*((k-1)%2Fk)%5Ek+-+k*(1+-+((k-1)%2Fk)%5E(k%2B1))+%2B+1+mod+k
 Checker generateCheckModK(const int k)
 {
 	const long leftSideNum = pow((k - 1), k);
-	// const int leftSideDenom = pow(k, k);
 	const long rightSideNum = pow(k, k + 1) - pow(k - 1, k + 1) - pow(k, k);
-	// const int rightSideDenom = leftSideDenom;
 	const long denominator = pow(k, k);
 
 	return [leftSideNum, rightSideNum, denominator, k](int n) -> bool {
@@ -39,17 +40,8 @@ void init()
 	}
 }
 
-int fewPrimes[] = {2, 3, 5, 7};
-
 int calcumalate(int n)
 {
-	// int upperBound = ceil(sqrt(n));
-	// for (int k = 2; k < upperBound; k++)
-	// {
-	// if (checkSituation(n, k))
-	// {
-	// }
-	// }
 	int maxEncountered = 0;
 	Checker lambda;
 	for (int i = 2; i <= CHECKERS_COUNT; i++)
