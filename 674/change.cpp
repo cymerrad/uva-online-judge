@@ -50,6 +50,7 @@ int magic(int n, Coins upTo = MAX_COIN)
 	if ((int)upTo > n)
 	{
 		cache[n][nsWhich[upTo]] = magic(n, nonsingular[nsWhich[upTo] - 1]);
+		return cache[n][nsWhich[upTo]];
 	}
 
 	int ways = 1; // there's always the trivial one: 1 + 1 + ... + 1 = n
