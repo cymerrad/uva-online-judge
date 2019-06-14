@@ -4,7 +4,7 @@
 #include <iterator>
 #include <cassert>
 
-#define DEBUG
+// #define DEBUG
 
 using namespace std;
 
@@ -164,7 +164,7 @@ int calculateLargestPatchOfLand(const int M, const int N)
 
 		for (int col = 0; col < N + BOUNDARY; col++)
 		{
-			colRev = N + BOUNDARY - col;
+			colRev = N + 1 - col; // mind the difference
 			performStepH(row, col);
 			performStepLR(lefts, row, col, col - pL);
 			performStepLR(rights, row, colRev, pR - colRev);
