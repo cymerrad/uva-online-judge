@@ -49,6 +49,78 @@ const char *determineIfPossible(const vector<int> &perm, const int n)
 	return ACCEPTED;
 }
 
+bool checkValidBeginning(int a, int b, int c)
+{
+	// negative examples:
+	// 3 1 4
+	// 4 2 5
+	// 5 3 7
+	if ((a - b) > 1)
+	{
+		// we've descended steeply (> 1) right at the beginning
+		if (c > a)
+		{
+			// and we definitely miss some numbers along the way
+			return false;
+		}
+	}
+	return true;
+}
+
+const char *determineIfPossibleHeuristic(const vector<int> &perm, const int n)
+{
+	if (n < 2)
+	{
+		return ACCEPTED;
+	}
+
+	if (!checkValidBeginning(perm[0], perm[1], perm[2]))
+	{
+		return REJECTED;
+	}
+
+	int next;
+	int prev = perm[0];
+	int maxEncountered = prev;
+	bool increasing = true;
+	for (int i = 1; i < n; i++)
+	{
+		next = perm[i];
+		// as long as we encounter bigger and bigger values, then it's cool
+		// the moment we drop for the first time, we better only DECREASE
+		// until we find another new maximum
+		if (next > maxEncountered)
+		{
+			maxEncountered = next;
+			increasing = true;
+		}
+		else
+		{
+			if (increasing)
+			{
+				// first drop since reaching maximum
+				increasing = false;
+			}
+			else
+			{
+				// k-th time we've done that
+				if (next < prev)
+				{
+					// cool
+				}
+				else
+				{
+					return REJECTED;
+				}
+			}
+		}
+
+		prev = next;
+	}
+
+	return ACCEPTED;
+}
+
 int main(int argc, char const *argv[])
 {
 #ifdef DEBUG
@@ -81,7 +153,7 @@ int main(int argc, char const *argv[])
 			{
 				cin >> permutation[i];
 			}
-			cout << determineIfPossible(permutation, trainLength);
+			cout << determineIfPossibleHeuristic(permutation, trainLength);
 		}
 		cout << endl;
 	}
