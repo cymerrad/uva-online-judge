@@ -1,0 +1,13 @@
+[
+  {
+    "command": "ssmacro.replace",
+    "args": {
+      "info": "vector::at -> vector::operator[]",
+      "find": "\\.at\\((\\w+)\\)\\.at\\((\\w+)\\)",
+      "replace": "[$1][$2]",
+      "all": true,
+      "reg": true,
+      "flag": "gm"
+    }
+  }
+]
