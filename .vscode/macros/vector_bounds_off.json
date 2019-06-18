@@ -3,7 +3,7 @@
     "command": "ssmacro.replace",
     "args": {
       "info": "vector::at -> vector::operator[]",
-      "find": "\\.at\\((\\w+)\\)\\.at\\((\\w+)\\)",
+      "find": "\\.at\\(([\\w\\W]+?)\\)\\.at\\(([\\w\\W]+?)\\)",
       "replace": "[$1][$2]",
       "all": true,
       "reg": true,

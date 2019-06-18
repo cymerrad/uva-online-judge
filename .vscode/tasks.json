@@ -37,6 +37,18 @@
         "cwd": "/bin"
       },
       "problemMatcher": ["$gcc"]
+    },
+    {
+      "type": "process",
+      "label": "Vector debug on",
+      "command": "ssmacro.macro",
+      "args": [".vscode/macros/vector_bounds_on.json"]
+    },
+    {
+      "type": "process",
+      "label": "Vector debug off",
+      "command": "ssmacro.macro",
+      "args": [".vscode/macros/vector_bounds_off.json"]
     }
   ]
 }
