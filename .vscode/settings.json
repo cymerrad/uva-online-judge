@@ -7,6 +7,9 @@
 		"vector": "cpp",
 		"algorithm": "cpp",
 		"limits": "cpp",
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"tuple": "cpp",
+		"fstream": "cpp",
+		"type_traits": "cpp"
 	}
 }
