@@ -6,36 +6,31 @@
       "type": "shell",
       "command": "if [ ! -e ${fileDirname}/input.txt ]; then echo 'No input.txt file'; exit 1; else ${fileDirname}/${fileBasenameNoExtension} < ${fileDirname}/input.txt > ${fileDirname}/output.txt; fi;",
       "problemMatcher": [],
-      "dependsOn": ["clang++ build active file"]
+      "dependsOn": ["g++ build active file"]
     },
     {
       "type": "shell",
       "label": "clang++ build active file",
-      "command": "/bin/clang++",
+      "command": "clang++",
       "args": [
         "-g",
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}"
       ],
-      "options": {
-        "cwd": "/bin"
-      },
       "problemMatcher": ["$gcc"]
     },
     {
       "type": "shell",
       "label": "g++ build active file",
-      "command": "/bin/g++",
+      "command": "g++",
       "args": [
         "-g",
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}"
       ],
-      "options": {
-        "cwd": "/bin"
-      },
+
       "problemMatcher": ["$gcc"]
     },
     {
