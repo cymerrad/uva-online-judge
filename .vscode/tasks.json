@@ -11,7 +11,7 @@
     {
       "type": "shell",
       "label": "(DEBUG FLAG) g++ build active file",
-      "command": "/bin/g++",
+      "command": "g++",
       "args": [
         "-g",
         "${file}",
@@ -19,39 +19,31 @@
         "${fileDirname}/${fileBasenameNoExtension}",
         "-D'DEBUG'"
       ],
-      "options": {
-        "cwd": "/bin"
-      },
       "problemMatcher": ["$gcc"]
     },
     {
       "type": "shell",
       "label": "clang++ build active file",
-      "command": "/bin/clang++",
+      "command": "clang++",
       "args": [
         "-g",
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}"
       ],
-      "options": {
-        "cwd": "/bin"
-      },
       "problemMatcher": ["$gcc"]
     },
     {
       "type": "shell",
       "label": "g++ build active file",
-      "command": "/bin/g++",
+      "command": "g++",
       "args": [
         "-g",
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}"
       ],
-      "options": {
-        "cwd": "/bin"
-      },
+
       "problemMatcher": ["$gcc"]
     },
     {
