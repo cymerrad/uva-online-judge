@@ -2,15 +2,16 @@
 import os
 import sys
 import requests as r
-import bs4 # BeautifulSoup4
+import bs4  # BeautifulSoup4
 import re
 from pathlib import Path
-import git # GitPython
+import git  # GitPython
 
 # example input:
 # https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=697
 
 TEMPLATE = '''#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ int main(int argc, char const *argv[])
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 		cin.close();
 		return 1;
 	}
@@ -40,6 +41,7 @@ int main(int argc, char const *argv[])
 '''
 
 title_re = re.compile(r'(\d+)\s*-\s*((\S+ )*\S+)')
+
 
 def parse_soup_for_task(soup: bs4.BeautifulSoup) -> dict:
     # for some stupid reason the only place where the number and name appear
@@ -56,8 +58,11 @@ def parse_soup_for_task(soup: bs4.BeautifulSoup) -> dict:
     else:
         raise Exception("Task data not found")
 
-allowed_chars_range = [45, 46] + list(range(48, 58)) + [95] + list(range(97, 123))
+
+allowed_chars_range = [45, 46] + \
+    list(range(48, 58)) + [95] + list(range(97, 123))
 allowed_chars = "".join([chr(x) for x in allowed_chars_range])
+
 
 def task_name_to_filename(name: str) -> str:
     return "".join([x for x in name.lower().replace(" ", "-") if x in allowed_chars])
@@ -97,12 +102,12 @@ if __name__ == "__main__":
 
     if git_commit:
         # git commit with task name
-        root_dir = Path(".") # TODO: be smarter about this?
+        root_dir = Path(".")  # TODO: be smarter about this?
         repo = git.Repo(root_dir.as_posix())
         repo.index.add(map(lambda pth: pth.as_posix(), files))
         repo.index.commit(task['name'])
 
-        print(f"Added {[x.relative_to(root_dir).as_posix() for x in files]} to git.")
+        print(
+            f"Added {[x.relative_to(root_dir).as_posix() for x in files]} to git.")
         print("Squash future work into this commit:")
         print("git add . ; git commit --amend --no-edit")
-
