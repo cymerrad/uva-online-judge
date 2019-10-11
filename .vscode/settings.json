@@ -10,6 +10,7 @@
 		"cmath": "cpp",
 		"tuple": "cpp",
 		"fstream": "cpp",
-		"type_traits": "cpp"
+		"type_traits": "cpp",
+		"chrono": "cpp"
 	}
 }
