@@ -143,7 +143,7 @@ with open("chains.json", "w") as fw:
 longest = 0
 for chz in chains.values():
     longest = max(longest, max(len(ch) for ch in chz))
-print(f"Longest chains has {longest} elements.")
+print(f"Longest chain has {longest} elements.")
 # for known input it's 5
 
 chains_by_len = {
@@ -161,7 +161,9 @@ for gap, chz in chains.items():
             chains_by_len[len(ch)][gap].append(ch[0])
 
 with open("chains_compacted.json", "w") as fw:
-    chainzzzwtf = dict((str(k), dict((str(kk), vv) for kk,vv in v.items())) for k, v in chains_by_len.items())
+    chainzzzwtf = dict((str(k), dict((str(kk), vv) for kk, vv in v.items()))
+                       for k, v in chains_by_len.items())
     json.dump(chainzzzwtf, fw, default=convert)
 
-print("{}\n{}\n{}\n".format(*[list(chains_by_len[k].keys()) for k in [3,4,5]]))
+print("Those are possible gap sizes per length\n{}\n{}\n{}\n".format(
+    *[list(chains_by_len[k].keys()) for k in [3, 4, 5]]))
