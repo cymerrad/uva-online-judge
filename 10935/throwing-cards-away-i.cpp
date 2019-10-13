@@ -1,7 +1,20 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 using namespace std;
+
+int printCards(int n)
+{
+	// throw away top
+	// move second to the bottom
+	// until there is only 1 left
+
+	int totalIterations = log2(n);
+	for (int i = 0; i < totalIterations; i++)
+	{
+	}
+}
 
 int main(int argc, char const *argv[])
 {
@@ -19,10 +32,10 @@ int main(int argc, char const *argv[])
 		return 1;
 	}
 #endif
-    int numOfCases;
-    cin >> numOfCases;
+	int numOfCases;
+	cin >> numOfCases;
 
-    // code your solution
+	// code your solution
 
 	return 0;
 }
