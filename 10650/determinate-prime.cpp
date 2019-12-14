@@ -1,8 +1,5 @@
 #include <iostream>
-#include <fstream>
 #include <unordered_map>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 unordered_map<int, vector<int>> len3Chains = {
@@ -131,6 +128,11 @@ void findCycles(int lo, int hi)
 		}
 	}
 }
+
+int chains3[] = {228, 162, 156, 144, 138, 132, 120, 114, 108, 102, 96, 90, 84, 78, 72, 66, 60, 54, 48, 42, 36, 30, 24, 18, 12, 6, 4, 2};
+int chains4[] = {108, 60, 42, 36, 30, 24, 18, 12, 6};
+int chains5[] = {30}; // [26891, 26921, 26951, 26981, 27011], [30851, 30881, 30911, 30941, 30971]
+
 
 int main(int argc, char const *argv[])
 {
