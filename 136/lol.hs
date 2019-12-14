@@ -11,7 +11,7 @@ import           Data.Ord
 
 main :: IO ()
 main = do
-  print (answer)
+  print answer
   return ()
 
 -- UGLY IS THE NORM!
@@ -25,7 +25,7 @@ sorted = mergeByNorm
   )
 
 uglyNums :: [Integer]
-uglyNums = [ ugly t | t <- sorted ]
+uglyNums = [ norm t | t <- sorted ]
 
 answer = uglyNums !! 1500
 
